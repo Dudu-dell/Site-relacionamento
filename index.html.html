@@ -1,43 +1,26 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site de Relacionamentos</title>
+    <title>Site de Relacionamentos - Amor Conectado</title>
+    
+    <!-- Meta Tags para SEO -->
+    <meta name="description" content="Amor Conectado é o site de relacionamentos ideal para você encontrar pessoas incríveis. Cadastre-se e conecte-se!">
+    <meta name="keywords" content="relacionamento, site de namoro, amizade, cadastro, perfis">
+    <meta name="author" content="Amor Conectado">
+
     <link rel="stylesheet" href="PROJETO 1/style.css">
-
-    <!-- Firebase SDKs para Web -->
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
-    <script>
-        // Configuração do Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyAWG5mE398BvHqWL048Qcrn29cLYWubiGQ",
-            authDomain: "quer-namorar-comigo-d2e6b.firebaseapp.com",
-            databaseURL: "https://quer-namorar-comigo-d2e6b-default-rtdb.firebaseio.com",
-            projectId: "quer-namorar-comigo-d2e6b",
-            storageBucket: "quer-namorar-comigo-d2e6b.appspot.com",
-            messagingSenderId: "561284220805",
-            appId: "1:561284220805:web:e10e49ebd2d50dbacc66ec",
-            measurementId: "G-RJQNCJGV46"
-        };
-
-        // Inicializar Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-    </script>
 </head>
 <body>
     <!-- Cabeçalho -->
     <header>
         <h1>Bem-vindo ao Amor Conectado ❤️</h1>
-        <button id="menuToggle">☰ Menu</button>
+        <button id="menuToggle" aria-label="Abrir ou fechar menu">☰ Menu</button>
         <nav id="menu" class="hidden">
             <ul>
                 <li><a href="#home">Home</a></li>
+                <li><a href="#about">Sobre</a></li>
                 <li><a href="#signup">Cadastro</a></li>
                 <li><a href="#login">Login</a></li>
                 <li><a href="#profile">Perfil</a></li>
@@ -47,38 +30,55 @@
 
     <!-- Conteúdo Principal -->
     <main>
+        <!-- Seção Home -->
         <section id="home">
             <h2>Encontre o Amor da Sua Vida</h2>
             <p>Descubra pessoas incríveis que combinam com você!</p>
+            <img src="img/couple.jpg" alt="Casal feliz conectado pelo site" style="width:100%; max-width:600px;">
         </section>
 
+        <!-- Seção Sobre -->
+        <section id="about">
+            <h2>Sobre Nós</h2>
+            <p>O <strong>Amor Conectado</strong> é a sua plataforma ideal para conhecer novas pessoas e criar conexões significativas. Nosso objetivo é unir pessoas de forma simples e segura!</p>
+        </section>
+
+        <!-- Seção Cadastro -->
         <section id="signup">
             <h2>Cadastro</h2>
             <form>
                 <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
+                
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+                
                 <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" placeholder="Crie uma senha segura" required>
+                
                 <button type="submit">Cadastrar</button>
             </form>
         </section>
 
+        <!-- Seção Login -->
         <section id="login">
             <h2>Login</h2>
             <form>
                 <label for="loginEmail">Email:</label>
-                <input type="email" id="loginEmail" name="email" required>
+                <input type="email" id="loginEmail" name="email" placeholder="Digite seu email" required>
+                
                 <label for="loginPassword">Senha:</label>
-                <input type="password" id="loginPassword" name="password" required>
+                <input type="password" id="loginPassword" name="password" placeholder="Digite sua senha" required>
+                
                 <button type="submit">Entrar</button>
             </form>
         </section>
 
+        <!-- Seção Perfil -->
         <section id="profile">
             <h2>Perfil</h2>
-            <p>Bem-vindo ao seu perfil!</p>
+            <p>Bem-vindo ao seu perfil! Cadastre-se para mais informações.</p>
+            <div id="profileDetails"></div>
         </section>
     </main>
 
@@ -87,7 +87,9 @@
         <p>&copy; 2025 Amor Conectado. Todos os direitos reservados.</p>
     </footer>
 
-    <button id="backToTop">⬆️ Voltar ao Topo</button>
+    <button id="backToTop" aria-label="Voltar ao topo">⬆️</button>
+
+    <!-- Script -->
     <script src="PROJETO 1/script.js"></script>
 </body>
 </html>
