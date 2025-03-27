@@ -1,124 +1,85 @@
-﻿// Configuração do Firebase
-const firebaseConfig = {
-    apiKey: "sua-api-key",
-    authDomain: "seu-app.firebaseapp.com",
-    databaseURL: "https://seu-app.firebaseio.com", // Certifique-se de adicionar seu databaseURL
-    projectId: "seu-id-projeto",
-    storageBucket: "seu-storage-bucket",
-    messagingSenderId: "seu-id-mensagem",
-    appId: "seu-id-app"
-};
+// script.js
 
-// Inicializando Firebase
-firebase.initializeApp(firebaseConfig);
-
-// Aguarda o carregamento do DOM
-document.addEventListener('DOMContentLoaded', () => {
-    const forms = document.querySelectorAll('form');
-
-    forms.forEach(form => {
-        form.addEventListener('submit', event => {
-            event.preventDefault(); // Evita envio padrão
-            alert('Formulário enviado com sucesso!');
-        });
-    });
+// Controle do Menu
+document.getElementById("menuToggle").addEventListener("click", () => {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("hidden");
 });
 
-// Cadastro de Usuário
-const signupForm = document.querySelector('#signup form');
-if (signupForm) {
-    signupForm.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Evita envio padrão
-        const name = document.querySelector('#name').value;
-        const email = document.querySelector('#email').value;
-        const password = document.querySelector('#password').value;
+// Função para "Voltar ao Topo"
+const backToTopButton = document.getElementById("backToTop");
 
-        try {
-            // Criar usuário no Firebase Authentication
-            const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
-            const user = userCredential.user;
+backToTopButton.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
-            // Salvar dados do usuário no Realtime Database
-            await firebase.database().ref('users/' + user.uid).set({
-                name: name,
-                email: email
-            });
-
-            alert('Cadastro realizado com sucesso!');
-        } catch (error) {
-            console.error('Erro no cadastro:', error);
-            alert('Erro ao cadastrar: ' + error.message);
-        }
-    });
-}
-
-// Login de Usuário
-const loginForm = document.querySelector('#login form');
-if (loginForm) {
-    loginForm.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Evita envio padrão
-        const email = document.querySelector('#loginEmail').value;
-        const password = document.querySelector('#loginPassword').value;
-
-        try {
-            // Login no Firebase Authentication
-            const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
-            alert('Login realizado com sucesso!');
-        } catch (error) {
-            console.error('Erro no login:', error);
-            alert('Erro ao fazer login: ' + error.message);
-        }
-    });
-}
-
-// Exibir dados do perfil do usuário
-firebase.auth().onAuthStateChanged(async (user) => {
-    const profileSection = document.querySelector('#profile');
-    if (user && profileSection) {
-        try {
-            // Recuperar dados do Realtime Database
-            const userDataSnapshot = await firebase.database().ref('users/' + user.uid).once('value');
-            const userData = userDataSnapshot.val();
-
-            if (userData) {
-                profileSection.innerHTML = `
-                    <h2>Perfil</h2>
-                    <p>Bem-vindo, ${userData.name}!</p>
-                    <p>Email: ${userData.email}</p>
-                `;
-            } else {
-                profileSection.innerHTML = `<p>Dados do usuário não encontrados!</p>`;
-            }
-        } catch (error) {
-            console.error('Erro ao carregar dados do perfil:', error);
-            alert('Erro ao carregar perfil do usuário!');
-        }
-    } else if (profileSection) {
-        profileSection.innerHTML = `
-            <h2>Perfil</h2>
-            <p>Você precisa fazer login para acessar seu perfil.</p>
-        `;
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        backToTopButton.classList.add("show");
+    } else {
+        backToTopButton.classList.remove("show");
     }
 });
 
-// Botão Voltar ao Topo
-const backToTopBtn = document.getElementById('backToTop');
-if (backToTopBtn) {
-    window.addEventListener('scroll', () => {
-        backToTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
+// Validação de Formulário de Cadastro
+document.querySelector("#signup form").addEventListener("submit", (event) => {
+    event.preventDefault();
 
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (name === "" || email === "" || password === "") {
+        alert("Por favor, preencha todos os campos.");
+    } else if (password.length < 6) {
+        alert("A senha deve ter pelo menos 6 caracteres.");
+    } else {
+        alert("Cadastro realizado com sucesso!");
+        exibirPerfil({ nome: name, email });
+    }
+});
+
+// Exibição Dinâmica de Perfis de Usuários
+const profileSection = document.getElementById("profile");
+
+function exibirPerfil(usuario) {
+    profileSection.innerHTML = `
+        <h2>Perfil</h2>
+        <p><strong>Nome:</strong> ${usuario.nome}</p>
+        <p><strong>Email:</strong> ${usuario.email}</p>
+    `;
 }
 
-// Alternar Menu Mobile
-const menuToggle = document.getElementById('menuToggle');
-const menu = document.getElementById('menu');
-
-if (menuToggle && menu) {
-    menuToggle.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-    });
+// Simulação de Carregamento Inicial do Perfil
+function carregarPerfil() {
+    profileSection.innerHTML = `
+        <h2>Perfil</h2>
+        <p>Bem-vindo ao seu perfil! Cadastre-se para mais informações.</p>
+    `;
 }
+carregarPerfil();
+
+// Melhorar Navegação entre as Seções
+document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
+    });
+});
+
+// Efeito de Fade-In ao Rolagem
+const fadeInElements = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+    fadeInElements.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            section.style.opacity = 1;
+            section.style.transform = "translateY(0)";
+        } else {
+            section.style.opacity = 0;
+            section.style.transform = "translateY(20px)";
+        }
+    });
+});
