@@ -1,70 +1,45 @@
-/* Estilização Geral */
+/* Estilo Básico */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background: linear-gradient(to bottom, #ff6f61, #f7f7f7);
     color: #333;
-    line-height: 1.6;
 }
 
 /* Cabeçalho */
 header {
-    background-color: #6200ea;
+    background-color: #ff6f61;
     color: white;
-    padding: 10px 20px;
     text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 20px;
 }
 
-h1 {
-    font-size: 2.5em;
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+header nav ul {
     display: flex;
     justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
 }
 
-nav ul li {
-    margin: 0 10px;
+header nav ul li {
+    margin: 0 15px;
 }
 
-nav ul li a {
+header nav ul li a {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    transition: color 0.3s;
 }
 
-nav ul li a:hover {
-    color: #ffb3ff;
-}
-
-/* Botão de alternância de menu */
-#menuToggle {
-    background: none;
-    border: none;
+header button {
+    background: transparent;
+    border: 2px solid white;
+    padding: 10px;
     color: white;
-    font-size: 1.5em;
     cursor: pointer;
-    margin-top: 10px;
-}
-
-/* Menu mobile */
-#menu.hidden {
-    display: none;
-}
-
-#menu ul {
-    flex-direction: column;
-    text-align: center;
+    border-radius: 5px;
 }
 
 /* Conteúdo Principal */
@@ -73,110 +48,76 @@ main {
 }
 
 section {
-    margin-bottom: 40px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease-in-out;
-}
-
-section:first-child {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Formulários */
-form {
-    background: white;
+    margin-bottom: 20px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 20px auto;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-input, button {
-    display: block;
+/* Cartões de Usuário */
+.user-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+    border: 2px solid #ff6f61;
+}
+
+.user-card h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #ff6f61;
+}
+
+/* Chat */
+.chat textarea {
     width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
+    height: 100px;
+    resize: none;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
 }
 
-input:focus {
-    border-color: #6200ea;
-    outline: none;
-}
-
-button {
-    background-color: #6200ea;
+.chat button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff6f61;
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
 }
 
-button:hover {
-    background-color: #3700b3;
+.chat button:hover {
+    background-color: #e05a50;
 }
 
 /* Rodapé */
 footer {
-    background-color: #6200ea;
-    color: white;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Botão Voltar ao Topo */
-#backToTop {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ff4081;
+    padding: 10px;
+    background-color: #333;
     color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    display: none; /* Ocultar por padrão */
 }
 
-#backToTop.show {
-    display: block;
-}
-
-#backToTop:hover {
-    background-color: #ff1a75;
-}
-
-/* Resolução Responsiva */
+/* Responsividade */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2em;
-    }
-
-    nav ul {
+    .user-card {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
-    form {
-        width: 90%;
+    .user-card img {
+        width: 80px;
+        height: 80px;
     }
 }
