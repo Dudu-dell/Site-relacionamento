@@ -1,9 +1,9 @@
 /* Estilo Básico */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #ff6f61, #f7f7f7);
+    background-color: #f7f7f7;
     color: #333;
 }
 
@@ -15,109 +15,39 @@ header {
     padding: 20px;
 }
 
-header nav ul {
+nav ul {
+    list-style: none;
     display: flex;
     justify-content: center;
-    list-style: none;
+    margin: 0;
     padding: 0;
-    margin: 10px 0 0;
 }
 
-header nav ul li {
+nav ul li {
     margin: 0 15px;
 }
 
-header nav ul li a {
+nav ul li a {
+    color: white;
     text-decoration: none;
-    color: white;
-    font-weight: bold;
 }
 
-header button {
-    background: transparent;
-    border: 2px solid white;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-/* Conteúdo Principal */
+/* Seções */
 main {
     padding: 20px;
 }
 
 section {
     margin-bottom: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Cartões de Usuário */
-.user-card {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.user-card img {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin-right: 15px;
-    border: 2px solid #ff6f61;
-}
-
-.user-card h3 {
-    margin: 0;
-    font-size: 1.2em;
-    color: #ff6f61;
-}
-
-/* Chat */
-.chat textarea {
-    width: 100%;
-    height: 100px;
-    resize: none;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 10px;
-}
-
-.chat button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #ff6f61;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.chat button:hover {
-    background-color: #e05a50;
-}
-
-/* Rodapé */
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .user-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .user-card img {
-        width: 80px;
-        height: 80px;
-    }
+/* Placeholder */
+#profile img {
+    border: 2px solid #ccc;
+    display: block;
+    margin: 10px auto;
 }
