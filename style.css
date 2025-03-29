@@ -1,26 +1,30 @@
-/* Estilo Básico */
+/* Fontes e Reset */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
+    background-color: #f9f9f9;
     color: #333;
 }
 
 /* Cabeçalho */
 header {
-    background-color: #ff6f61;
+    background: linear-gradient(135deg, #ff6f61, #ff9671);
     color: white;
-    text-align: center;
     padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    margin: 0;
-    padding: 0;
+    padding: 10px 0;
 }
 
 nav ul li {
@@ -30,24 +34,77 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
-/* Seções */
-main {
-    padding: 20px;
+nav ul li a:hover {
+    color: #ffdfa3;
 }
 
-section {
+/* Hero Section */
+.hero {
+    background: #f9f9f9;
+    padding: 50px 20px;
+    text-align: center;
+    color: #333;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
     margin-bottom: 20px;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Placeholder */
-#profile img {
-    border: 2px solid #ccc;
-    display: block;
-    margin: 10px auto;
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.btn-primary {
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #ff9671;
+}
+
+/* Formulário */
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: #333;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #555;
 }
